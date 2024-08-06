@@ -1,8 +1,10 @@
 <script setup lang="ts">
     import { useRouter } from 'vue-router'
-    import { reactive, ref } from 'vue'
+    import { ref } from 'vue'
     import { Users, UserType } from '../../Types/Database'
-    import { CurrentUser } from '../../Types/CustomFunction';
+    import { CurrentUser } from '../../Types/CustomFunction'
+    import { getBlob, ref as storageRef } from 'firebase/storage'
+    import { storage } from '@/firebase/init'
 
     // User Info
     const UserData = ({
@@ -39,6 +41,16 @@
         }
     }
 
+    // When retrieve BLOB from firestore, it requires to download BLOB and convert to URL
+    async function ConvertBlobtoURL() {
+        console.log(storage)
+        const imageRef = storageRef(storage, Users.image)
+        console.log(imageRef)
+        const imageBlob = await getBlob(imageRef)
+        console.log(imageBlob)
+        return URL.createObjectURL(imageBlob)
+    }
+
     // Edit Button
     let edit = ref(false)
     function editButton() {
@@ -51,6 +63,7 @@
         alert("User Updated")
     }
 
+    console.log(await ConvertBlobtoURL())
     const router = useRouter()
 //class style
 const headerTitle = "font-bold text-size-[32px]"
@@ -183,7 +196,7 @@ const headerTitle = "font-bold text-size-[32px]"
             </ion-grid>
         </div>
         <!--Actions-->
-        <ion-grid>
+        <ion-grid class="flex justify-center">
             <ion-row>
                 <ion-col>
                     <ion-item lines="none">

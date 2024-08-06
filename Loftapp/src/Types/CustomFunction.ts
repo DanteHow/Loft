@@ -1,4 +1,4 @@
-import { db } from '../firebase/init.js'
+import { db } from '../firebase/init'
 import { query, where, updateDoc, getDocs, collection, doc, getDoc } from "firebase/firestore"
 
 class User {
@@ -35,12 +35,6 @@ class User {
 }
 
 export const CurrentUser = new User()
-
-
-class Invoice {
-    private userID: string
-
-}
 
 class Employee {
 

@@ -36,10 +36,6 @@ const routes = [
         component: () => import('./VuePages/Users/ProfilePage.vue')
     },
     {
-        path:'/Profile/Edit',
-        component: () => import('./VuePages/Users/ProfileEdit.vue')
-    },
-    {
         path: '/RoomDetails',
         component: () => import('./VuePages/DeviceAndProperty/RoomDetailPage.vue')
     },

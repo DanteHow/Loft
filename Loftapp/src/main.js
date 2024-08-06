@@ -8,13 +8,6 @@ import 'virtual:windi.css'
 import Vue3EasyDataTable from 'vue3-easy-data-table'
 import 'vue3-easy-data-table/dist/style.css'
 
-// Vuex
-// import store from './store';
-
-// Firebase / Firestore / VueFire
-import { VueFire, VueFireAuth } from 'vuefire'
-import { firebaseApp } from './firebase/init.js'
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 
@@ -33,12 +26,7 @@ import '@ionic/vue/css/display.css';
 
 import './theme.css'
 
-const app = createApp(App).use(IonicVue).use(router).use(naive).use(VueFire, {
-  firebaseApp,
-  module: [
-    VueFireAuth(),
-  ],
-})
+const app = createApp(App).use(IonicVue).use(router).use(naive)
 app.component('EasyDataTable', Vue3EasyDataTable)
 
 router.isReady().then(async () => {
